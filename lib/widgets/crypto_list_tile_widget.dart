@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:volume/common/styles.dart';
 
 class CryptoListTileWidget extends StatelessWidget {
   final String name;
@@ -27,10 +28,17 @@ class CryptoListTileWidget extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          SizedBox(
-              width: 25,
-              height: 25,
-              child: SvgPicture.network(this.svgImageUrl)),
+          SvgPicture.network(
+            this.svgImageUrl,
+            placeholderBuilder: (BuildContext context) => Container(
+                child: const SizedBox(
+                  child: CircularProgressIndicator(),
+                  width: 25,
+                  height: 25,
+                )),
+            height: 25,
+            width: 25,
+          ),
           SizedBox(
             width: 15,
           ),
@@ -51,9 +59,7 @@ class CryptoListTileWidget extends StatelessWidget {
           Text(
             "(${this.priceChanges})",
             style: Theme.of(context).textTheme.title.copyWith(
-                color: this.priceChanges.contains("-")
-                    ? Colors.red
-                    : Colors.green),
+                color: this.priceChanges.contains("-") ? redColor : greenColor),
           ),
         ],
       ),
