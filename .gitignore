@@ -38,3 +38,6 @@ lib/generated_plugin_registrant.dart
 
 # DOT ENV FILE
 .env
+
+# Key.properties file for build apk
+/android/key.properties
